@@ -1,6 +1,6 @@
 {
   "name": "@schirrel/request",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple wrapper for fetch api",
   "main": "Request.js",
   "scripts": {

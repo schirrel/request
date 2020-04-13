@@ -16,13 +16,27 @@ const POST = {
 const DELETE = { method: "DELETE" };
 
 export default class Request {
+
+   /**
+   * Method to convert object into search params into the URL
+   * @param {String} url
+   * @param {Object} params
+   * @returns the url with query params
+   */
   static QueryURL(uri, params) {
     let url = new URL(uri);
     let urlParams = new URLSearchParams(params).toString();
     url.search = urlParams;
     return url;
   }
-  static getResponse = (result, resolve, reject) => {
+  
+   /**
+   * Method that valide response type to return the correct method
+   * @param {String} url
+   * @param {Object} options
+   * @returns the response body
+   */
+  static getResponse (result, resolve, reject) {
     switch (result.type) {
       case "basic":
       case "text":
@@ -34,6 +48,12 @@ export default class Request {
         return result.body();
     }
   };
+   /**
+   * Method that perform the request
+   * @param {String} url
+   * @param {Object} options
+   * @returns the request promisse
+   */
   static async request(url, options) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -60,9 +80,9 @@ export default class Request {
     });
   }
   /**
-   * Method to convert object into search params into the URL
+   * Method to mount URL to request
    * @param {String} url
-   * @param {Object} patams
+   * @param {Object} params
    * @returns the url with query params
    */
   static mountURL(url, params) {
