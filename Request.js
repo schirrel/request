@@ -1,8 +1,7 @@
 //! Request.js
-//! version : 1.0.0
+//! version : 1.0.2
 //! authors : Alan Balen Schio - @schirrel
 //! license : MIT
-//! momentjs.com
 
 const merge = (first, second) => Object.assign({}, first, second);
 
