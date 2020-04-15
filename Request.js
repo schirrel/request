@@ -1,5 +1,4 @@
 //! Request.js
-//! version : 1.0.2
 //! authors : Alan Balen Schio - @schirrel
 //! license : MIT
 
@@ -29,6 +28,28 @@ export default class Request {
     url.search = urlParams;
     return url;
   }
+
+  static getResponseByType(response) {
+    
+    switch (response.type) {
+      case "basic":
+      case "text":
+        return response.text();
+      case "json":
+      case "cors":
+        return response.json();
+      default:
+        return response.body();
+    }
+  }
+  static getResponseByContentType(response) {
+    if (/(application\/json)/.test(response.headers.get('content-type'))) {
+      return response.json();
+    } else if (/(text)/.test(response.headers.get('content-type'))) {
+      return response.text();
+    }
+    return response.body();   
+  }
   
    /**
    * Method that valide response type to return the correct method
@@ -36,17 +57,11 @@ export default class Request {
    * @param {Object} options
    * @returns the response body
    */
-  static getResponse (result, resolve, reject) {
-    switch (result.type) {
-      case "basic":
-      case "text":
-        return result.text();
-      case "json":
-      case "cors":
-        return result.json();
-      default:
-        return result.body();
-    }
+  static getResponse(response, resolve, reject) {
+    if (!!response.headers.get('content-type')) {
+      return this.getResponseByContentType(response)
+    }   
+      return this.getResponseByType(response)
   };
    /**
    * Method that perform the request
@@ -61,16 +76,16 @@ export default class Request {
           options.body = JSON.stringify(options.body);
         }
         // TODO Implements here interceptor before request
-        let result = await fetch(url, options);
-        if (result.status > 400) {
+        let response = await fetch(url, options);
+        if (response.status > 400) {
           throw new Error(
             JSON.stringify({
-              status: result.status,
-              statusText: result.statusText,
+              status: response.status,
+              statusText: response.statusText,
             })
           );
         } else {
-          resolve(this.getResponse(result));
+          resolve(this.getResponse(response));
         }
       } catch (err) {
         reject(err);
