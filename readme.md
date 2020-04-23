@@ -7,7 +7,7 @@ Just import the `Request.js` file or run `npm i @schirrel/request`.
 
 ## Examples
 
-See [Example Folder](https://github.com/schirrel/request/tree/master/Example)
+See [Example Folder](https://github.com/schirrel/request/tree/master/docs)
 
 #### GET
 
