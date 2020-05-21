@@ -1,6 +1,8 @@
 # Request
 A simple promisse based and single file wrapper for new comers start to use Fetch API.
 
+[![npm version](https://badge.fury.io/js/%40schirrel%2Frequest.svg)](https://badge.fury.io/js/%40schirrel%2Frequest)
+
 ## Installing
 
 Just import the `Request.js` file or run `npm i @schirrel/request`.
