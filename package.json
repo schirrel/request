@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/schirrel/request/issues"
   },
-  "homepage": "https://github.com/schirrel/request#readme"
+  "homepage": "https://github.com/schirrel/request#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
