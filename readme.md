@@ -1,5 +1,7 @@
 # Request
-A simple promisse based and single file wrapper for new comers start to use Fetch API.
+A simple promise based and single file wrapper for newers to start using Fetch API.
+
+For those who dont want a big library to simple requests, and yet want to simplify the fetch use.
 
 [![npm version](https://badge.fury.io/js/%40schirrel%2Frequest.svg)](https://badge.fury.io/js/%40schirrel%2Frequest)
 
@@ -49,3 +51,6 @@ Request.delete('https://jsonplaceholder.typicode.com/posts/1')
 .catch((err) => {});
 
 ```
+
+
+For a http client you can also check [api-request](https://github.com/schirrel/api-request) current under development
