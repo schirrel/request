@@ -37,7 +37,9 @@ export default class Request {
         return response.text();
       case "json":
       case "cors":
-        return response.json();
+        return response.json();  
+      case "opaque":
+        return response;
       default:
         return response.body();
     }
